@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.chart.PieChart?>
+
+<BorderPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controlador.VacunacionController">
+
+    <!-- BARRA SUPERIOR -->
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="65.0" spacing="15.0" style="-fx-background-color: #1A3A6B; -fx-padding: 0 20 0 20;">
+            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="AGUGU" />
+            <Separator orientation="VERTICAL" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="ADSw-AGUGU - Sistema de Guardería" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 13px;" text="Admin Sucursal - Juan Pérez" />
+        </HBox>
+    </top>
+
+    <!-- MENU LATERAL -->
+    <left>
+        <VBox prefWidth="210.0" spacing="4.0"
+              style="-fx-background-color: #FFFFFF; -fx-border-color: #E0E0E0; -fx-border-width: 0 1 0 0;">
+            <padding><Insets top="15" right="10" bottom="15" left="10"/></padding>
+
+            <Button fx:id="btnInicio" text="Inicio" onAction="#abrirInicio"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnNinos" text="Niños" onAction="#abrirInscripcion"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnEmpleados" text="Empleados" onAction="#abrirRegistroEmpleado"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnPagos" text="Pagos" onAction="#abrirPagos"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnActividades" text="Actividades" onAction="#abrirActividad"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnVacunas" text="Vacunas" onAction="#abrirVacunacion"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: #E8EEF7; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10 15 10 15; -fx-background-radius: 5;"/>
+
+            <Button fx:id="btnReportes" text="Evaluaciones" onAction="#abrirEvaluacionEmpleado"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnAyuda" text="Ayuda"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Pane VBox.vgrow="ALWAYS"/>
+            <VBox alignment="CENTER" prefHeight="120.0"
+                  style="-fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #F5F5F5;">
+                <Label text="[Imagen bebé]"
+                       style="-fx-font-size: 11px; -fx-text-fill: #999999;"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="15.0">
+                <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
+
+                <!-- Titulo -->
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="CU-004: Consultar Niños Pendientes por Vacunar" />
+
+                <!-- Panel principal -->
+                <VBox spacing="15.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 20;">
+
+                    <!-- Titulo + buscador -->
+                    <HBox alignment="CENTER_LEFT" spacing="15.0">
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Informe de Vacunacion" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="tfBuscarNino" prefWidth="320.0" promptText="Buscar niño..." style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 8;" />
+                    </HBox>
+
+                    <!-- Fila: filtros + grafico + panel documento -->
+                    <HBox spacing="15.0">
+
+                        <!-- Filtros -->
+                        <VBox prefWidth="270.0" spacing="12.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 15; -fx-background-color: #FAFAFA;">
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label prefWidth="65.0" style="-fx-font-size: 13px;" text="Sucursal:" />
+                                <ComboBox fx:id="cbTipoNinos" prefWidth="160.0" promptText="Niños" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label prefWidth="65.0" style="-fx-font-size: 13px;" text="Sucursal:" />
+                                <ComboBox fx:id="cbSucursal" prefWidth="160.0" promptText="Sucursal" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label prefWidth="65.0" style="-fx-font-size: 13px;" text="Filtros:" />
+                                <ComboBox fx:id="cbFiltros" prefWidth="160.0" promptText="Al día" />
+                            </HBox>
+                            <Label fx:id="lblTiempoRespuesta" style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Tiempo de respuesta: 42 segundos" />
+                        </VBox>
+
+                        <!-- Espacio para grafico de torta -->
+                        <VBox alignment="CENTER" spacing="10.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 15; -fx-background-color: #FAFAFA;" HBox.hgrow="ALWAYS">
+                            <PieChart fx:id="graficoVacunacion" prefHeight="220.0" prefWidth="420.0" />
+                        </VBox>
+
+                        <!-- Panel documento -->
+                        <VBox alignment="CENTER" prefWidth="180.0" spacing="10.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 15; -fx-background-color: #EEEEEE;">
+                            <VBox alignment="CENTER" prefHeight="100.0" style="-fx-border-color: #AAAAAA; -fx-border-radius: 3; -fx-background-color: #CCCCCC; -fx-background-radius: 3;">
+                                <Label style="-fx-font-size: 11px; -fx-text-fill: #777777;" text="[Icono documento]" />
+                            </VBox>
+                            <Label fx:id="lblVistatimpo" style="-fx-font-size: 12px; -fx-text-fill: #555555; -fx-text-alignment: center;" text="Vista previa de respuesta: 42 segundos" wrapText="true" />
+                        </VBox>
+
+                    </HBox>
+
+                    <!-- Tabla -->
+                    <TableView fx:id="tablaVacunacion" maxWidth="1.7976931348623157E308" prefHeight="220.0">
+                        <columns>
+                            <TableColumn fx:id="colTipoVacuna" prefWidth="180.0" text="Tipo de vacuna" />
+                            <TableColumn fx:id="colEdad" prefWidth="110.0" text="Edad" />
+                            <TableColumn fx:id="colDosesPendinas" prefWidth="140.0" text="Dosis Pendientes" />
+                            <TableColumn fx:id="colNuextaDosa" prefWidth="140.0" text="Próxima Dosis" />
+                            <TableColumn fx:id="colNombres" prefWidth="160.0" text="Nombres" />
+                        </columns>
+                        <placeholder><Label text="Sin registros" /></placeholder>
+                    </TableView>
+
+                    <!-- Boton -->
+                    <HBox alignment="CENTER">
+                        <Button fx:id="btnCrearInforme" onAction="#crearInforme" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 14 50 14 50; -fx-background-radius: 5;" text="Crear Informe..." />
+                    </HBox>
+
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controlador.RegistroEmpleadoController">
+
+    <!-- BARRA SUPERIOR -->
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="65.0" spacing="15.0" style="-fx-background-color: #1A3A6B; -fx-padding: 0 20 0 20;">
+            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="AGUGU" />
+            <Separator orientation="VERTICAL" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="ADSw-AGUGU - Sistema de Guardería" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 13px;" text="Admin Sucursal - Juan Pérez" />
+        </HBox>
+    </top>
+
+    <!-- MENU LATERAL -->
+    <left>
+        <VBox prefWidth="210.0" spacing="4.0"
+              style="-fx-background-color: #FFFFFF; -fx-border-color: #E0E0E0; -fx-border-width: 0 1 0 0;">
+            <padding><Insets top="15" right="10" bottom="15" left="10"/></padding>
+
+            <Button fx:id="btnInicio" text="Inicio" onAction="#abrirInicio"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnNinos" text="Niños" onAction="#abrirInscripcion"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnEmpleados" text="Empleados" onAction="#abrirRegistroEmpleado"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: #E8EEF7; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10 15 10 15; -fx-background-radius: 5;"/>
+
+            <Button fx:id="btnPagos" text="Pagos" onAction="#abrirPagos"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnActividades" text="Actividades" onAction="#abrirActividad"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnVacunas" text="Vacunas" onAction="#abrirVacunacion"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnReportes" text="Evaluaciones" onAction="#abrirEvaluacionEmpleado"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnAyuda" text="Ayuda"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+        </VBox>
+    </left>
+
+    <!-- BOTONES INFERIORES -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #F5F5F5; -fx-border-color: #CCCCCC; -fx-border-width: 1 0 0 0;">
+            <padding><Insets bottom="15" left="20" right="20" top="15" /></padding>
+            <Button fx:id="btnGuardar" onAction="#guardarEmpleado" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12 30 12 30; -fx-background-radius: 5;" text="Guardar y Registrar Empleado" />
+            <Button fx:id="btnCancelar" onAction="#cancelar" style="-fx-background-color: #888888; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12 30 12 30; -fx-background-radius: 5;" text="Cancelar" />
+            <Button fx:id="btnLimpiar" onAction="#limpiarFormulario" style="-fx-background-color: #888888; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12 30 12 30; -fx-background-radius: 5;" text="Limpiar Formulario" />
+        </HBox>
+    </bottom>
+
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="15.0">
+                <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
+
+                <!-- Titulo -->
+                <HBox alignment="CENTER" style="-fx-background-color: #1A3A6B; -fx-background-radius: 5; -fx-padding: 14;">
+                    <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="Registro de Nuevo Empleado" />
+                </HBox>
+
+                <!-- Panel principal -->
+                <VBox spacing="15.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 20;">
+
+                    <!-- Dos columnas -->
+                    <HBox spacing="15.0">
+
+                        <!-- COLUMNA IZQUIERDA: Datos Personales -->
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+
+                            <Button maxWidth="1.7976931348623157E308" mouseTransparent="true" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10; -fx-background-radius: 4;" text="Datos Personales" />
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Nombre Completo" />
+                            <TextField fx:id="tfNombreCompleto" maxWidth="1.7976931348623157E308" promptText="ej. Marta Ramirez" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;" />
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Cédula" />
+                            <TextField fx:id="tfCedula" maxWidth="1.7976931348623157E308" promptText="ej. CC 1.123.456.789" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;" />
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Fecha de Nacimiento" />
+                            <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                <TextField fx:id="tfFechaNacimiento" promptText="ej. 15/04/1990" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;" HBox.hgrow="ALWAYS" />
+                                <Button style="-fx-background-color: #E0E0E0; -fx-padding: 7 10 7 10; -fx-background-radius: 4;" text="..." />
+                            </HBox>
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Dirección" />
+                            <TextField fx:id="tfDireccion" maxWidth="1.7976931348623157E308" promptText="ej. Calle 123 num45-67, Bogota" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;" />
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Telefono Fijo" />
+                            <TextField fx:id="tfTelefonoFijo" maxWidth="1.7976931348623157E308" promptText="ej. 601 2345678" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;" />
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Celular" />
+                            <TextField fx:id="tfCelular" maxWidth="1.7976931348623157E308" promptText="ej. 310 1234567" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;" />
+
+                        </VBox>
+
+                        <!-- COLUMNA DERECHA: Información Laboral -->
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+
+                            <Button maxWidth="1.7976931348623157E308" mouseTransparent="true" style="-fx-background-color: #4A5A7B; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10; -fx-background-radius: 4;" text="Información Laboral" />
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Titulo Universitario" />
+                            <ComboBox fx:id="cbTituloUniversitario" maxWidth="1.7976931348623157E308" promptText="ej. Licenciatura en Educación Infantil" />
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Número de Tarjeta Profesional" />
+                            <TextField fx:id="tfTarjetaProfesional" maxWidth="1.7976931348623157E308" promptText="ej. TP123456789" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;" />
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Cargo" />
+                            <ComboBox fx:id="cbCargo" maxWidth="1.7976931348623157E308" promptText="ej. Educadora Infantil" />
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Sucursal" />
+                            <ComboBox fx:id="cbSucursal" maxWidth="1.7976931348623157E308" promptText="ej. Sede Chapinero" />
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Experiencia (años)" />
+                            <TextField fx:id="tfExperiencia" maxWidth="1.7976931348623157E308" promptText="ej. 5" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;" />
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Salario Base" />
+                            <TextField fx:id="tfSalarioBase" maxWidth="1.7976931348623157E308" promptText="ej. 2.500.000" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;" />
+
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Tipo de Contrato" />
+                            <ComboBox fx:id="cbTipoContrato" maxWidth="1.7976931348623157E308" promptText="ej. Directo" />
+
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

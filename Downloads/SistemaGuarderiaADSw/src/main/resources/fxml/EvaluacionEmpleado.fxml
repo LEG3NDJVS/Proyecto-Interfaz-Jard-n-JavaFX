@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controlador.EvaluacionEmpleadoController">
+
+    <!-- BARRA SUPERIOR -->
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="65.0" spacing="15.0" style="-fx-background-color: #1A3A6B; -fx-padding: 0 20 0 20;">
+            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="AGUGU" />
+            <Separator orientation="VERTICAL" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="ADSw-AGUGU - Sistema de Guardería" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 13px;" text="Admin Sucursal - Juan Pérez" />
+        </HBox>
+    </top>
+
+    <!-- MENU LATERAL -->
+    <left>
+        <VBox prefWidth="210.0" spacing="4.0"
+              style="-fx-background-color: #FFFFFF; -fx-border-color: #E0E0E0; -fx-border-width: 0 1 0 0;">
+            <padding><Insets top="15" right="10" bottom="15" left="10"/></padding>
+
+            <Button fx:id="btnInicio" text="Inicio" onAction="#abrirInicio"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnNinos" text="Niños" onAction="#abrirInscripcion"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnEmpleados" text="Empleados" onAction="#abrirRegistroEmpleado"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnPagos" text="Pagos" onAction="#abrirPagos"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnActividades" text="Actividades" onAction="#abrirActividad"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnVacunas" text="Vacunas" onAction="#abrirVacunacion"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnReportes" text="Evaluaciones" onAction="#abrirEvaluacionEmpleado"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: #E8EEF7; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10 15 10 15; -fx-background-radius: 5;"/>
+
+            <Button fx:id="btnAyuda" text="Ayuda"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+        </VBox>
+    </left>
+
+    <!-- BOTONES INFERIORES -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #F5F5F5; -fx-border-color: #CCCCCC; -fx-border-width: 1 0 0 0;">
+            <padding><Insets bottom="15" left="20" right="20" top="15" /></padding>
+            <Button fx:id="btnGuardar" onAction="#guardarEvaluacion" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12 30 12 30; -fx-background-radius: 5;" text="Guardar Evaluación" />
+            <Button fx:id="btnCancelar" onAction="#cancelar" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12 30 12 30; -fx-background-radius: 5;" text="Cancelar" />
+            <Button fx:id="btnHistorial" onAction="#verHistorial" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12 30 12 30; -fx-background-radius: 5;" text="Ver Historial de Evaluaciónes" />
+        </HBox>
+    </bottom>
+
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="15.0">
+                <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
+
+                <!-- Titulo -->
+                <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Evaluación de Desempeño del Empleado" />
+
+                <!-- Barra busqueda empleado -->
+                <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 12;">
+                    <Label style="-fx-font-size: 13px; -fx-font-weight: bold;" text="Empleado:" />
+                    <TextField fx:id="tfEmpleadoNombre" prefWidth="180.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;">
+                        <text>Marta Ramirez</text>
+                    </TextField>
+                    <TextField fx:id="tfBuscarEmpleado" promptText="Buscar por ID o nombre..." style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;" HBox.hgrow="ALWAYS" />
+                    <Button fx:id="btnBuscar" onAction="#buscarEmpleado" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 8 25 8 25; -fx-background-radius: 4;" text="Buscar" />
+                </HBox>
+
+                <!-- Dos columnas principales -->
+                <HBox spacing="15.0">
+
+                    <!-- COLUMNA IZQUIERDA: Datos del Empleado -->
+                    <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+
+                        <Button maxWidth="1.7976931348623157E308" mouseTransparent="true" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10; -fx-background-radius: 4;" text="Datos del Empleado" />
+
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Nombre:" />
+                        <TextField fx:id="tfNombre" maxWidth="1.7976931348623157E308" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;">
+                            <text>Marta Ramirez</text>
+                        </TextField>
+
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Cargo:" />
+                        <TextField fx:id="tfCargo" maxWidth="1.7976931348623157E308" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;">
+                            <text>Educadora Infantil</text>
+                        </TextField>
+
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Sucursal:" />
+                        <TextField fx:id="tfSucursal" maxWidth="1.7976931348623157E308" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;">
+                            <text>Sucursal Centro</text>
+                        </TextField>
+
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Fecha de Ingreso:" />
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                            <TextField fx:id="tfFechaIngreso" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;" HBox.hgrow="ALWAYS">
+                                <text>12/03/2018</text>
+                            </TextField>
+                            <Button style="-fx-background-color: #E0E0E0; -fx-padding: 7 10 7 10; -fx-background-radius: 4;" text="..." />
+                        </HBox>
+
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Experiencia:" />
+                        <TextField fx:id="tfExperiencia" maxWidth="1.7976931348623157E308" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;">
+                            <text>10 años</text>
+                        </TextField>
+
+                    </VBox>
+
+                    <!-- COLUMNA DERECHA: Formulario de Evaluación -->
+                    <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+
+                        <Button maxWidth="1.7976931348623157E308" mouseTransparent="true" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10; -fx-background-radius: 4;" text="Formulario de Evaluación" />
+
+                        <!-- Puntaje con Slider -->
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Puntaje General (1-100):" />
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <Slider fx:id="sliderPuntaje" max="100" min="1" value="85" HBox.hgrow="ALWAYS" />
+                            <TextField fx:id="tfPuntaje" prefWidth="60.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7; -fx-alignment: CENTER;">
+                                <text>85</text>
+                            </TextField>
+                        </HBox>
+
+                        <!-- Fortalezas -->
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Fortalezas:" />
+                        <TextArea fx:id="taFortalezas" maxWidth="1.7976931348623157E308" prefHeight="90.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4;" wrapText="true">
+                            <text>Marta es una educadora muy atenta y cariñosa con los niños. Ella es creativa y siempre trae nuevas ideas para actividades lúdicas. Su comunicación con los padres es excelente.</text>
+                        </TextArea>
+
+                        <!-- Areas de Mejora -->
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Areas de Mejora:" />
+                        <TextArea fx:id="taMejora" maxWidth="1.7976931348623157E308" prefHeight="90.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4;" wrapText="true">
+                            <text>Se recomienda mejorar en la gestión del tiempo de algunas actividades para evitar retrasos en el horario. Además, podría profundizar en el uso de herramientas digitales para informes pedagógicos.</text>
+                        </TextArea>
+
+                        <!-- Observaciones -->
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Observaciones Generales:" />
+                        <TextArea fx:id="taObservaciones" maxWidth="1.7976931348623157E308" prefHeight="80.0" style="-fx-border-color: #1A3A6B; -fx-border-radius: 4; -fx-background-radius: 4; -fx-border-width: 2;" wrapText="true">
+                            <text>En general, el desempeño de Marta ha sido muy positivo. Es una valiosa incorporación a nuestro equipo.</text>
+                        </TextArea>
+
+                        <!-- Fecha de Evaluación -->
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Fecha de Evaluación:" />
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                            <TextField fx:id="tfFechaEvaluacion" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7;" HBox.hgrow="ALWAYS">
+                                <text>28/05/2026</text>
+                            </TextField>
+                            <Button style="-fx-background-color: #E0E0E0; -fx-padding: 7 10 7 10; -fx-background-radius: 4;" text="..." />
+                        </HBox>
+
+                    </VBox>
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

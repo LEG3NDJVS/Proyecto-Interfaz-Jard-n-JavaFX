@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controlador.PanelPrincipalController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="65.0" spacing="15.0" style="-fx-background-color: #1A3A6B; -fx-padding: 0 20 0 20;">
+            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="AGUGU" />
+            <Separator orientation="VERTICAL" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="ADSw-AGUGU - Sistema de Guardería" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 13px;" text="Admin Sucursal - Juan Pérez" />
+        </HBox>
+    </top>
+
+    <left>
+        <VBox prefWidth="210.0" spacing="4.0"
+              style="-fx-background-color: #FFFFFF; -fx-border-color: #E0E0E0; -fx-border-width: 0 1 0 0;">
+            <padding><Insets top="15" right="10" bottom="15" left="10"/></padding>
+
+            <Button text="Inicio" onAction="#abrirInicio"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: #E8EEF7; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10 15 10 15; -fx-background-radius: 5;"/>
+
+            <Button text="Niños" onAction="#abrirInscripcion"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button text="Empleados" onAction="#abrirRegistroEmpleado"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button text="Pagos" onAction="#abrirPagos"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button text="Actividades" onAction="#abrirActividad"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button text="Vacunas" onAction="#abrirVacunacion"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button text="Evaluaciones" onAction="#abrirEvaluacionEmpleado"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button text="Ayuda"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="15.0">
+                <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
+
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Panel Principal de Control" />
+
+                <HBox spacing="15.0">
+
+                    <VBox spacing="10.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 18;" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Bienvenida" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Bienvenido al Sistema de Gestión de Guardería AGUGU. Desde este panel podrá acceder rápidamente a los módulos principales del sistema." wrapText="true" />
+                    </VBox>
+
+                    <VBox spacing="10.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 18;" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Resumen de Niños Inscritos" />
+                        <BarChart fx:id="barChartNinos" legendVisible="false" prefHeight="180.0">
+                            <xAxis>
+                                <CategoryAxis label="Etapa" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Niños" />
+                            </yAxis>
+                        </BarChart>
+                        <Button maxWidth="1.7976931348623157E308" onAction="#abrirInscripcion" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 10; -fx-background-radius: 5;" text="Inscribir Nuevo Niño" />
+                    </VBox>
+
+                    <VBox spacing="10.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 18;" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Pagos de Matrícula y Pensión" />
+                        <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1A8A1A;" text="COP 12.400.000" />
+                        <PieChart fx:id="pieChartPagos" legendVisible="true" prefHeight="180.0" />
+                        <Button maxWidth="1.7976931348623157E308" onAction="#abrirPagos" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 10; -fx-background-radius: 5;" text="Gestionar Pagos" />
+                    </VBox>
+
+                </HBox>
+
+                <HBox spacing="15.0">
+
+                    <VBox prefHeight="323.0" prefWidth="217.0" spacing="10.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 18;" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Dieta Personalizada" />
+                        <Label style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #EE3333;" text="Alergias críticas: 2" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Permite consultar y actualizar la ficha nutricional personalizada de cada niño." wrapText="true" />
+                        <Button maxWidth="1.7976931348623157E308" onAction="#abrirAlimentacion" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 10; -fx-background-radius: 5;" text="Actualizar Dieta" />
+                    </VBox>
+
+                    <VBox spacing="10.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 18;" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Próximas Actividades" />
+                        <Label text="Visita al Parque Simón Bolívar - 09:00" />
+                        <Label text="Taller de Pintura Sensorial - 10:30" />
+                        <Label text="Actividad Motriz en Patio - 08:30" />
+                        <Button maxWidth="1.7976931348623157E308" onAction="#abrirActividad" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 10; -fx-background-radius: 5;" text="Gestionar Actividades" />
+                    </VBox>
+
+                    <VBox spacing="10.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 18;" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Estado de Vacunación" />
+                        <PieChart fx:id="pieChartVacunacion" legendVisible="true" prefHeight="180.0" prefWidth="266.0" />
+                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Pendientes: 3   |   Al día: 45" />
+                        <Button maxWidth="1.7976931348623157E308" onAction="#abrirVacunacion" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 10; -fx-background-radius: 5;" text="Consultar Vacunación" />
+                    </VBox>
+
+                </HBox>
+
+                <HBox spacing="15.0">
+
+                    <VBox spacing="10.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 18;" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Gestión de Empleados" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Registre empleados, cargos, sucursales, tipo de contrato y datos laborales." wrapText="true" />
+                        <Label style="-fx-font-size: 13px; -fx-font-weight: bold;" text="Empleados activos: 12" />
+                        <Button maxWidth="1.7976931348623157E308" onAction="#abrirRegistroEmpleado" style="-fx-background-color: #4A5A7B; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 10; -fx-background-radius: 5;" text="Registrar Empleado" />
+                    </VBox>
+
+                    <VBox spacing="10.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 18;" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Evaluación de Desempeño" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Consulte empleados registrados y guarde evaluaciones semestrales con puntaje, fortalezas y observaciones." wrapText="true" />
+                        <Label style="-fx-font-size: 13px; -fx-font-weight: bold;" text="Evaluaciónes recientes: 5" />
+                        <Button maxWidth="1.7976931348623157E308" onAction="#abrirEvaluacionEmpleado" style="-fx-background-color: #4A5A7B; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 10; -fx-background-radius: 5;" text="Evaluar Empleado" />
+                    </VBox>
+
+                </HBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

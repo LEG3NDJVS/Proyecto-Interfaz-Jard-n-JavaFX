@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controlador.AlimentacionController">
+
+    <!-- BARRA SUPERIOR -->
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="65.0" spacing="15.0" style="-fx-background-color: #1A3A6B; -fx-padding: 0 20 0 20;">
+            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="AGUGU" />
+            <Separator orientation="VERTICAL" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="ADSw-AGUGU - Sistema de Guardería" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 13px;" text="Admin Sucursal - Juan Pérez" />
+        </HBox>
+    </top>
+
+    <!-- MENU LATERAL -->
+    <left>
+        <VBox prefWidth="210.0" spacing="4.0"
+              style="-fx-background-color: #FFFFFF; -fx-border-color: #E0E0E0; -fx-border-width: 0 1 0 0;">
+            <padding><Insets top="15" right="10" bottom="15" left="10"/></padding>
+
+            <Button fx:id="btnInicio" text="Inicio" onAction="#abrirInicio"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnNinos" text="Niños" onAction="#abrirInscripcion"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnEmpleados" text="Empleados" onAction="#abrirRegistroEmpleado"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnPagos" text="Pagos" onAction="#abrirPagos"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnActividades" text="Actividades" onAction="#abrirActividad"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnVacunas" text="Vacunas" onAction="#abrirVacunacion"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnReportes" text="Evaluaciones" onAction="#abrirEvaluacionEmpleado"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Button fx:id="btnAyuda" text="Ayuda"
+                    maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT"
+                    style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-padding: 10 15 10 15;"/>
+
+            <Pane VBox.vgrow="ALWAYS"/>
+            <VBox alignment="CENTER" prefHeight="120.0"
+                  style="-fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #F5F5F5;">
+                <Label text="[Imagen bebé]"
+                       style="-fx-font-size: 11px; -fx-text-fill: #999999;"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="15.0">
+                <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
+
+                <!-- Titulo + buscador -->
+                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                    <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Detalles de Alimentacion" HBox.hgrow="ALWAYS" />
+                    <TextField fx:id="tfBuscarFicha" prefWidth="320.0" promptText="Buscar ficha..." style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 8;" />
+                </HBox>
+
+                <!-- Panel principal -->
+                <VBox spacing="15.0" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 20;">
+
+                    <!-- Nombre niño -->
+                    <VBox spacing="3.0">
+                        <Label fx:id="lblNombreNino" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Lucas Gómez - 4 meses" />
+                        <Label fx:id="lblHijosDetalle" style="-fx-font-size: 13px; -fx-text-fill: #666666;" text="(Lucas 4 meses + Sofía 2 años)" />
+                    </VBox>
+
+                    <!-- Fila: calculadora + panel derecho -->
+                    <HBox spacing="15.0">
+
+                        <!-- COLUMNA IZQUIERDA: Calculadora -->
+                        <VBox spacing="12.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 15; -fx-background-color: #FAFAFA;" HBox.hgrow="ALWAYS">
+
+                            <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Calculadora automatica de pension" />
+
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label prefWidth="90.0" style="-fx-font-size: 14px;" text="Salario:" />
+                                <TextField fx:id="tfSalario" prefWidth="130.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7; -fx-font-size: 14px;">
+                                    <text>3.200.000</text>
+                                </TextField>
+                            </HBox>
+
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label prefWidth="90.0" style="-fx-font-size: 14px;" text="15% =" />
+                                <Label fx:id="lblPorcentaje" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="480.000" />
+                            </HBox>
+
+                            <HBox alignment="TOP_LEFT" spacing="10.0">
+                                <Label prefWidth="90.0" style="-fx-font-size: 14px;" text="Jornadas:" />
+                                <VBox spacing="6.0">
+                                    <CheckBox fx:id="chkManana" selected="true" style="-fx-font-size: 13px;" text="Mañana" />
+                                    <CheckBox fx:id="chkTarde" selected="true" style="-fx-font-size: 13px;" text="Tarde" />
+                                    <CheckBox fx:id="chkSemiCompleta" selected="true" style="-fx-font-size: 13px;" text="Semi-completa" />
+                                    <CheckBox fx:id="chkExtendido" selected="false" style="-fx-font-size: 13px;" text="Extendido" />
+                                </VBox>
+                            </HBox>
+                        </VBox>
+
+                        <!-- COLUMNA DERECHA: Panel familia -->
+                        <VBox spacing="10.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 15; -fx-background-color: #FAFAFA;" HBox.hgrow="ALWAYS">
+
+                            <TextField fx:id="tfNombreTabla" maxWidth="1.7976931348623157E308" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 7; -fx-font-size: 13px;">
+                                <text>Lucas Gómez - 4 meses</text>
+                            </TextField>
+
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="Familia Cliente:" />
+                                <TextField fx:id="tfFamiliaCliente" prefWidth="130.0" promptText="Sofía" style="-fx-border-color: #CCCCCC; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 6;" />
+                                <Button fx:id="btnAsignar" onAction="#asignarFamilia" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 6 12 6 12; -fx-background-radius: 4;" text="Asignar" />
+                                <Button fx:id="btnRecargar" onAction="#recargarDatos" style="-fx-background-color: #E0E0E0; -fx-text-fill: #333333; -fx-font-size: 12px; -fx-padding: 6 12 6 12; -fx-background-radius: 4;" text="Recargar" />
+                            </HBox>
+
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label style="-fx-font-size: 12px; -fx-text-fill: #555555;" text="(Lucas 4 meses + Sofía 2 años)" HBox.hgrow="ALWAYS" />
+                                <ComboBox fx:id="cbFiltroFamilia" prefWidth="120.0" />
+                            </HBox>
+
+                            <TableView fx:id="tablaFamilia" maxWidth="1.7976931348623157E308" prefHeight="160.0">
+                                <columns>
+                                    <TableColumn fx:id="colFamilia" prefWidth="100.0" text="Familia" />
+                                    <TableColumn fx:id="colNino" prefWidth="100.0" text="Niño" />
+                                    <TableColumn fx:id="colEmpleados" prefWidth="85.0" text="Empleados" />
+                                    <TableColumn fx:id="colTotal" prefWidth="100.0" text="Total" />
+                                </columns>
+                                <placeholder><Label text="Sin registros" /></placeholder>
+                            </TableView>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Fila: Dieta Inicial + Prohibido -->
+                    <HBox spacing="15.0">
+
+                        <!-- Dieta Inicial -->
+                        <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Dieta Inicial:" />
+                            <TableView fx:id="tablaDieta" maxWidth="1.7976931348623157E308" prefHeight="180.0">
+                                <columns>
+                                    <TableColumn fx:id="colAlimentosDieta" prefWidth="160.0" text="Alimentos permitidos" />
+                                    <TableColumn fx:id="colNinoDieta" prefWidth="80.0" text="Niño" />
+                                    <TableColumn fx:id="colTotalDieta" prefWidth="80.0" text="Total" />
+                                </columns>
+                                <placeholder><Label text="Sin registros" /></placeholder>
+                            </TableView>
+                        </VBox>
+
+                        <!-- Prohibido -->
+                        <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Alimentos prohibidos:" HBox.hgrow="ALWAYS" />
+                                <Label fx:id="lblVistaPDF" style="-fx-font-size: 13px; -fx-text-fill: #1A6BBB; -fx-cursor: hand;" text="Vista previa PDF" />
+                            </HBox>
+                            <TableView fx:id="tablaProhibidos" maxWidth="1.7976931348623157E308" prefHeight="180.0">
+                                <columns>
+                                    <TableColumn fx:id="colAlimentosProh" prefWidth="140.0" text="Alimentos prohibidos" />
+                                    <TableColumn fx:id="colMotivos" prefWidth="140.0" text="Motivos" />
+                                    <TableColumn fx:id="colOnzas" prefWidth="80.0" text="Onzas" />
+                                </columns>
+                                <placeholder><Label text="Sin registros" /></placeholder>
+                            </TableView>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Servicios extras + boton -->
+                    <HBox alignment="CENTER_LEFT" spacing="20.0">
+                        <Label style="-fx-font-size: 13px; -fx-font-weight: bold;" text="Servicios Extras Seleccionados (en Dieta):" />
+                        <CheckBox fx:id="chkVitaminas" selected="false" style="-fx-font-size: 13px;" text="Vitaminas" />
+                        <CheckBox fx:id="chkCaldo" selected="true" style="-fx-font-size: 13px;" text="Caldo Especial" />
+                        <CheckBox fx:id="chkFruta" selected="false" style="-fx-font-size: 13px;" text="Fruta Extra" />
+                        <CheckBox fx:id="chkComedor" selected="true" style="-fx-font-size: 13px;" text="Comedor" />
+                        <Pane HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnCrearFicha" onAction="#crearFichaNutricional" style="-fx-background-color: #1A3A6B; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12 20 12 20; -fx-background-radius: 5;" text="Crear/Actualizar Ficha Nutricional" />
+                    </HBox>
+
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>
